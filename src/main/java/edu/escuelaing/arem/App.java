@@ -19,10 +19,11 @@ public class App
     public static void main( String[] args )
     {	
     	port(getPort());
+    	staticFiles.location("/public"); // Static files
+    	
         get("/inputdata", (req, res) -> inputDataPage(req, res));
         get("/results", (req, res) -> resultsPage(req, res));
-    	
-        System.out.println( "Server is starting..." );
+        //System.out.println( "Server is starting..." );
         get("/hello", (req, res) -> "Hello Heroku");
     }
     
