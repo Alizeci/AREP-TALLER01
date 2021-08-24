@@ -1,19 +1,34 @@
 var Module = (() => {
     
     const showInfo = (infoStock) => {
-        document.getElementById("header").innerHTML = 'Current Stock data for ' + infoStock.name;
+        console.log(infoStock);
+        document.getElementById("lbStock").innerHTML = 'Historical Stock data for ' + infoStock.name;
         _completeTable(infoStock);
     };
 
     const _completeTable = function (infoStock) {
         $(document).ready(function () {
-            let fields =
-                "<tr><td>" +
-                infoStock.coord.lat +
+            var fila= $("#infoStockId");
+            console.log(infoStock.timeLine["2021-04-01"]);
+
+            for (let ad_date in infoStock.timeLine) {
+                console.log(ad_date);
+                console.log(infoStock.timeLine[ad_date]);
+                var markup = "<tr><td>" +
+                ad_date +
                 "</td><td>" +
-                infoStock.coord.lon + 
+                infoStock.timeLine[ad_date].open + 
+                "</td><td>"+
+                infoStock.timeLine[ad_date].high +
+                "</td><td>"+
+                infoStock.timeLine[ad_date].low + 
+                "</td><td>"+
+                infoStock.timeLine[ad_date].close + 
+                "</td><td>"+
+                infoStock.timeLine[ad_date].volume + 
                 "</td></tr>";
-            $("table").append(fields);
+                fila.append(markup);
+            }
         });
     };
 

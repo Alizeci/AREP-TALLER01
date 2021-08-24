@@ -1,5 +1,9 @@
 package edu.escuelaing.arem;
 
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+
 import spark.Request;
 import spark.Response;
 
@@ -35,11 +39,13 @@ public class StocksService {
                 req.queryParams("lastname");
     }
     
-    public StockData getStockData(Request req, Response res, final StockCache stockCache) throws StockNotFoundException {
-    	String stock = req.queryParams("st");
+    public String getStockData(Request req, Response res, final StockCache stockCache) throws StockNotFoundException {
+    	String stock = req.queryParams("stock");
     	String timePeriod = "DAILY";
     	System.out.println("Stock: "+ stock);
-    	return stockCache.getStockData(stock, timePeriod);
+    	Gson gson = new Gson();
+    	StockData result = stockCache.getStockData(stock, timePeriod);
+    	return gson.toJson(result);
 	}
 
 }
