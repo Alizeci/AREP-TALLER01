@@ -8,11 +8,13 @@ import org.json.JSONObject;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class StockCache {
-	private ConcurrentHashMap<String, StockData> stocksInfo = new ConcurrentHashMap<>();
+	
+	private static ConcurrentHashMap<String, StockData> stocksInfo = new ConcurrentHashMap<String, StockData>();
 
 	public StockData getStockData(String stock, String timePeriod) throws StockNotFoundException {
-		System.out.println("Entra a Cache!");
-		if (stocksInfo.get(stock) == null) {
+		
+		if (!stocksInfo.containsKey(stock)) {
+			System.out.println("No existe en caché");
 			try {
 				StockData newStock = addInfoStock(stock, timePeriod, new HttpConnection());
 				stocksInfo.put(stock, newStock);
@@ -27,10 +29,7 @@ public class StockCache {
 	private StockData addInfoStock(String stock, String timePeriod, final HttpConnection httpConnection)
 			throws UnirestException {
 		
-		System.out.println("Entrando a adicionar nuevo ......... con Stock: " + stock + " y timePeriod: " + timePeriod);
 		JSONObject jsonObject = httpConnection.getInfoByStockAndDailyPeriod(stock, timePeriod);
-
-		//System.out.println(jsonObject);
 
 		Iterator<String> iterKeys = jsonObject.keys();
 		HashMap<String, TimeData> timeline = new HashMap<>();
@@ -45,8 +44,8 @@ public class StockCache {
 			
 			timeline.put(key, timeData);
 		}
+		
 		StockData stockFull = new StockData(stock, timeline);
-
 		return stockFull;
 	}
 

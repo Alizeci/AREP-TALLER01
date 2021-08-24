@@ -2,7 +2,7 @@ var Module = (() => {
     
     const showInfo = (infoStock) => {
         console.log(infoStock);
-        document.getElementById("lbStock").innerHTML = 'Historical Stock data for ' + infoStock.name;
+        document.getElementById("stockInfo").innerHTML = 'Historical data for ' + infoStock.name;
         _completeTable(infoStock);
     };
 
@@ -29,7 +29,9 @@ var Module = (() => {
                 "</td></tr>";
                 fila.append(markup);
             }
+            //$('#table').dataTable();
         });
+        
     };
 
     const _cleanTable = function () {

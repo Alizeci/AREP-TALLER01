@@ -5,7 +5,7 @@ import static spark.Spark.*;
 /**
  * Minimal web app example for Heroku using SparkWeb
  *
- * @author daniel
+ * @author daniel and Alejandra
  */
 public class App 
 {
