@@ -1,7 +1,6 @@
 var Module = (() => {
     
     const showInfo = (infoStock) => {
-        console.log(infoStock);
         document.getElementById("stockInfo").innerHTML = 'Historical data for ' + infoStock.name;
         _completeTable(infoStock);
     };
