@@ -1,5 +1,10 @@
 package edu.escuelaing.arem;
 
+/**
+ * TimeData represent an object with detailed information about a stock.
+ * @author aleja
+ *
+ */
 public class TimeData {
 	
 	private double open;

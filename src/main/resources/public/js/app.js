@@ -9,11 +9,10 @@ var Module = (() => {
     const _completeTable = function (infoStock) {
         $(document).ready(function () {
             var fila= $("#infoStockId");
-            console.log(infoStock.timeLine["2021-04-01"]);
-
+            
             for (let ad_date in infoStock.timeLine) {
-                console.log(ad_date);
-                console.log(infoStock.timeLine[ad_date]);
+                //console.log(ad_date);
+                //console.log(infoStock.timeLine[ad_date]);
                 var markup = "<tr><td>" +
                 ad_date +
                 "</td><td>" +
@@ -29,7 +28,6 @@ var Module = (() => {
                 "</td></tr>";
                 fila.append(markup);
             }
-            //$('#table').dataTable();
         });
         
     };
@@ -44,14 +42,33 @@ var Module = (() => {
         });
     };
 
-    const getInfoByStock = () => {
+    const getChecked = () => {
+        const btn = document.querySelector('#gb');
+        // handle button click
+        btn.onclick = function () {
+          const rbs = document.querySelectorAll('input[name="btnradio"]');
+          let selectedValue;
+
+          for (const rb of rbs) {
+            if (rb.checked) {
+              selectedValue = rb.value;
+              getInfoByStock(selectedValue);
+              rb.checked = false;
+              break;
+            }
+          }
+        };
+    }
+
+    const getInfoByStock = (selectedValue) => {
         _cleanTable();
         stock = $("#stockName").val();
-        apiclient.getInfoByStock(stock);
+        apiclient.getInfoByStock(stock, selectedValue);
     };
 
 	return {
 		getInfoByStock: getInfoByStock,
-        showInfo: showInfo
+        showInfo: showInfo,
+        getChecked: getChecked
 	}
 })();

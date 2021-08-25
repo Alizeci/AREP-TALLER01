@@ -2,6 +2,11 @@ package edu.escuelaing.arem;
 
 import java.util.HashMap;
 
+/**
+ * StockData represent an object with a stock's name and its timeline, which have detailed information about the stock.
+ * @author aleja
+ *
+ */
 public class StockData {
 	private String name;
 	private HashMap<String, TimeData> timeLine;

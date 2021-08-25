@@ -1,12 +1,14 @@
 var apiclient = (function () {
     
-    var getInfoByStock = function (stock){
+    var getInfoByStock = function (stock, timePeriod){
         
-        /*axios.get('https://sparkwebapp-taller01.herokuapp.com/data?stock=' + stock)
+        /*Heroku Endpoint*/
+        /*axios.get('https://sparkwebapp-taller01.herokuapp.com/data?stock=' + stock+"&period="+timePeriod)
         .then(response=> Module.showInfo(response.data))
         .catch(error=> console.log(error));*/
-
-        axios.get('http://localhost:4567/data?stock=' + stock)
+        
+        /*Localhost Endpoint*/
+        axios.get('http://localhost:4567/data?stock=' + stock+"&period="+timePeriod)
             .then(response=> Module.showInfo(response.data))
             .catch(error=> console.log(error));
     };

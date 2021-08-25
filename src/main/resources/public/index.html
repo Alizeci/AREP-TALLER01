@@ -32,18 +32,27 @@
         </p>
       </form>
       <label for="Name">Choose one of the following options to filter the search.</label>
-      <div class="form-row text-center">
-        <button class="btn btn-primary" id="getInfo" type="button" onclick="Module.getInfoByStock()">DAILY</button>
-        <button class="btn btn-primary" type="button">INTRA-DAY</button>
-        <button class="btn btn-primary" type="button">WEEKLY</button>
-        <button class="btn btn-primary" type="button">MONTHLY</button>
+
+      <div class="btn-group" id="gb" role="group" aria-label="Basic radio toggle button group"
+        onclick="Module.getChecked()">
+        <input type="radio" class="btn-check" name="btnradio" value="DAILY" id="DAILY" autocomplete="off">
+        <label class="btn btn-outline-primary" for="DAILY">DAILY</label>
+
+        <input type="radio" class="btn-check" name="btnradio" value="INTRADAY" id="INTRADAY" autocomplete="off">
+        <label class="btn btn-outline-primary" for="INTRADAY">INTRADAY</label>
+
+        <input type="radio" class="btn-check" name="btnradio" value="WEEKLY" id="WEEKLY" autocomplete="off">
+        <label class="btn btn-outline-primary" for="WEEKLY">WEEKLY</label>
+
+        <input type="radio" class="btn-check" name="btnradio" value="MONTHLY" id="MONTHLY" autocomplete="off">
+        <label class="btn btn-outline-primary" for="MONTHLY">MONTHLY</label>
       </div>
     </div>
     <div class="row">
       <div style="width: 100%; max-width: auto;">
         <div>
           <br />
-          <h2 id="stockInfo">Historical data</h2>
+          <h2 id="stockInfo">Historical Stock data</h2>
         </div>
         <table class="table table-striped table-bordered table-hover" id="table"
           style="width: 100%; text-align: center;">
