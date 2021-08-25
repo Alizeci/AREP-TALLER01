@@ -32,6 +32,13 @@ Para agregar por ejemplo el api externo de [iexCloud](https://iexcloud.io) se de
 
 ![](resources/endpoint1.png)
 
+## 🏁 Cómo Empezar (para ejecutar el proyecto localmente)
+
+*Tener en cuenta para la Ejecución:*
+
+Cambia el endpoint de apiclient en el Cliente JS Web. Para hacer esto, ingrese a resources/js/apiclient.js y cambie en la línea #9 **ENDPOINT_HEROKU** por **ENDPOINT_LOCAL** o descomente las lineas #11 a #13 y comente las líneas #6 a #8.
+
+
 ## Herramientas utilizadas
 
 | Herramienta | Uso |
